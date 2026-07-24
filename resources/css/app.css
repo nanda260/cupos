@@ -1,0 +1,127 @@
+@import "./fonts.css";
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@theme {
+    --font-sans: 'Sora', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ==========================================================================
+   Halaman Login — CUPOS
+   ========================================================================== */
+
+
+.font-display {
+    font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+}
+
+.cupos-page-bg {
+    background-color: #DAD4C6;
+    font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+}
+
+.cupos-left-panel {
+    background: radial-gradient(120% 100% at 100% 0%, #4a3420 0%, #1c1710 35%, #101014 70%, #0b0b0d 100%);
+}
+
+.cupos-btn-primary {
+    background: linear-gradient(180deg, #F6B93B 0%, #EF9F2E 100%);
+    box-shadow: 0 8px 20px -6px rgba(239, 159, 46, 0.55);
+    cursor: pointer;
+}
+.cupos-btn-primary:hover { filter: brightness(1.04); }
+.cupos-btn-primary:active { filter: brightness(0.97); }
+
+.cupos-input:focus {
+    border-color: #EF9F2E;
+    box-shadow: 0 0 0 3px rgba(239, 159, 46, 0.18);
+}
+
+.cupos-logo-mark {
+    background: transparent;
+}
+.cupos-logo-pie {
+    background: conic-gradient(#F6B93B 0deg 270deg, #ffffff 270deg 360deg);
+}
+
+/* ==========================================================================
+   Dashboard & Sidebar
+   ========================================================================== */
+
+.cupos-sidebar {
+    background: radial-gradient(120% 100% at 0% 0%, #4a3420 0%, #1c1710 35%, #101014 70%, #0b0b0d 100%);
+}
+
+.cupos-sidebar-link {
+    color: rgba(255, 255, 255, 0.55);
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+.cupos-sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.cupos-sidebar-link.is-active {
+    background: linear-gradient(180deg, #F6B93B 0%, #EF9F2E 100%);
+    color: #14161c;
+    font-weight: 600;
+}
+
+.cupos-stat-card {
+    background-color: #ffffff;
+    border: 1px solid #ECE7DB;
+}
+
+/* ==========================================================================
+   Sidebar Responsive (kontrol manual, tidak bergantung utility dinamis)
+   ========================================================================== */
+
+.cupos-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: 18rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cupos-sidebar.is-open {
+    transform: translateX(0);
+}
+
+.cupos-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 40;
+}
+
+.cupos-sidebar-backdrop.is-open {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .cupos-sidebar {
+        position: sticky;
+        top: 0;
+        left: auto;
+        bottom: auto;
+        width: 16rem;
+        height: 100vh;
+        overflow-y: auto;
+        transform: none;
+        transition: none;
+    }
+    .cupos-sidebar-backdrop {
+        display: none !important;
+    }
+    .cupos-mobile-only {
+        display: none !important;
+    }
+}
