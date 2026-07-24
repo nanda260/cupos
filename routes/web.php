@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.ogin');
 });
 
 Route::middleware('guest')->group(function () {
