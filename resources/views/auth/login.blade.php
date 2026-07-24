@@ -12,16 +12,18 @@
         <link rel="icon" href="{{ asset('favicon.ico') }}">
     @endif
 
+    @include('partials.theme-style')
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="cupos-page-bg min-h-screen flex items-center justify-center p-6">
+<body class="cupos-page-bg min-h-svh flex items-center justify-center p-4 sm:p-6">
 
     <div
-        class="w-full max-w-[1100px] rounded-[28px] overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2 bg-white">
+        class="w-full max-w-[1100px] max-h-[calc(100svh-2rem)] sm:max-h-[calc(100svh-3rem)] rounded-[28px] overflow-y-auto shadow-2xl grid grid-cols-1 md:grid-cols-2 bg-white">
 
         {{-- PANEL KIRI --}}
-        <div class="cupos-left-panel relative hidden md:flex flex-col justify-between p-10 text-white min-h-[720px]">
+        <div class="cupos-left-panel relative hidden md:flex flex-col justify-between p-10 text-white">
 
             <div class="flex items-center gap-2">
             </div>
@@ -47,7 +49,7 @@
         </div>
 
         {{-- PANEL KANAN --}}
-        <div class="flex flex-col p-8 sm:p-12 min-h-[720px]">
+        <div class="flex flex-col p-8 sm:p-12">
 
             <div class="flex items-center justify-between">
                 <div class="cupos-logo-mark w-9 h-9 rounded-xl flex items-center justify-center overflow-hidden md:hidden">

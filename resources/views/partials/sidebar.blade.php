@@ -1,4 +1,4 @@
-<aside id="cupos-sidebar" class="cupos-sidebar flex-shrink-0 flex flex-col p-6 text-white">
+<aside id="cupos-sidebar" class="cupos-sidebar flex-shrink-0 flex flex-col p-6 cupos-sidebar-text-100">
 
     {{-- Logo --}}
     <div class="flex items-center justify-between mb-10">
@@ -12,7 +12,7 @@
             </div>
             <span class="font-display font-bold text-lg truncate max-w-[10rem]">{{ $shopProfile->name ?? 'CUPOS' }}</span>
         </div>
-        <button type="button" onclick="toggleSidebar()" class="cupos-mobile-only text-white/60 hover:text-white transition">
+        <button type="button" onclick="toggleSidebar()" class="cupos-mobile-only cupos-sidebar-icon-btn transition">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
     </div>
@@ -62,9 +62,21 @@
                 'icon'  => '<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>',
             ],
             [
-                'label' => 'Pengaturan',
-                'route' => 'settings.index',
-                'icon'  => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+                'label'    => 'Pengaturan',
+                'type'     => 'dropdown',
+                'icon'     => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+                'children' => [
+                    [
+                        'label' => 'Profil Kedai',
+                        'route' => 'settings.index',
+                        'icon'  => '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+                    ],
+                    [
+                        'label' => 'Personalisasi',
+                        'route' => 'settings.personalization',
+                        'icon'  => '<circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.062 0-.874.716-1.625 1.625-1.625H16c3.312 0 6-2.688 6-6 0-4.5-4.5-8.5-10-8.5z"/>',
+                    ],
+                ],
             ],
         ];
     @endphp
@@ -139,19 +151,19 @@
     </nav>
 
     {{-- Info User & Logout --}}
-    <div class="border-t border-white/10 pt-5 mt-5">
-        <p class="text-sm font-medium text-white truncate">{{ auth()->user()->name }}</p>
-        <p class="text-xs text-white/40 truncate mb-4">{{ auth()->user()->email }}</p>
+    <div class="cupos-sidebar-border border-t pt-5 mt-5">
+        <p class="text-sm font-medium cupos-sidebar-text-100 truncate">{{ auth()->user()->name }}</p>
+        <p class="text-xs cupos-sidebar-text-40 truncate mb-4">{{ auth()->user()->email }}</p>
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit"
-                    class="w-full flex items-center gap-2 text-sm text-white/60 hover:text-white transition" style="cursor: pointer;">
+                    class="w-full flex items-center gap-2 text-sm cupos-sidebar-icon-btn transition" style="cursor: pointer;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
                 Keluar
             </button>
         </form>
 
-        <p class="text-[10px] text-white/25 text-center mt-4">Powered by CUPOS</p>
+        <p class="text-[10px] cupos-sidebar-text-25 text-center mt-4">Powered by CUPOS</p>
     </div>
 </aside>

@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.ogin');
+    return view('auth.login');
 });
 
 Route::middleware('guest')->group(function () {
@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings', [ShopProfileController::class, 'index'])->name('settings.index');
     Route::put('/settings', [ShopProfileController::class, 'update'])->name('settings.update');
+    Route::get('/settings/personalization', [ShopProfileController::class, 'personalization'])->name('settings.personalization');
+    Route::put('/settings/personalization', [ShopProfileController::class, 'updatePersonalization'])->name('settings.personalization.update');
 });
 
 Route::resource('categories', CategoryController::class)->except(['show']);

@@ -14,5 +14,9 @@ class ShopProfile extends Model
         'receipt_footer',
         'tax_percentage',
         'service_charge_percentage',
+        'primary_color',
+        'sidebar_color',
+        'sidebar_text_mode',
+        'body_color',
     ];
 }

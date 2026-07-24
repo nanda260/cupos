@@ -19,53 +19,82 @@
 }
 
 .cupos-page-bg {
-    background-color: #DAD4C6;
+    background-color: var(--cupos-body-bg, #DAD4C6);
     font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
 }
 
 .cupos-left-panel {
-    background: radial-gradient(120% 100% at 100% 0%, #4a3420 0%, #1c1710 35%, #101014 70%, #0b0b0d 100%);
+    background: linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--cupos-sidebar-start, #1c1710) 82%, white) 0%,
+        var(--cupos-sidebar-start, #1c1710) 45%,
+        color-mix(in srgb, var(--cupos-sidebar-start, #1c1710) 70%, black) 100%
+    );
 }
 
 .cupos-btn-primary {
-    background: linear-gradient(180deg, #F6B93B 0%, #EF9F2E 100%);
-    box-shadow: 0 8px 20px -6px rgba(239, 159, 46, 0.55);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cupos-primary, #EF9F2E) 75%, white) 0%, var(--cupos-primary, #EF9F2E) 100%);
+    box-shadow: 0 8px 20px -6px rgba(var(--cupos-primary-rgb, 239, 159, 46), 0.55);
     cursor: pointer;
 }
 .cupos-btn-primary:hover { filter: brightness(1.04); }
 .cupos-btn-primary:active { filter: brightness(0.97); }
 
 .cupos-input:focus {
-    border-color: #EF9F2E;
-    box-shadow: 0 0 0 3px rgba(239, 159, 46, 0.18);
+    border-color: var(--cupos-primary, #EF9F2E);
+    box-shadow: 0 0 0 3px rgba(var(--cupos-primary-rgb, 239, 159, 46), 0.18);
 }
 
 .cupos-logo-mark {
     background: transparent;
 }
 .cupos-logo-pie {
-    background: conic-gradient(#F6B93B 0deg 270deg, #ffffff 270deg 360deg);
+    background: conic-gradient(var(--cupos-primary, #EF9F2E) 0deg 270deg, #ffffff 270deg 360deg);
 }
 
 /* ==========================================================================
    Dashboard & Sidebar
    ========================================================================== */
 
+/* Sama seperti .cupos-left-panel: gradient murni dari 1 warna dasar. */
 .cupos-sidebar {
-    background: radial-gradient(120% 100% at 0% 0%, #4a3420 0%, #1c1710 35%, #101014 70%, #0b0b0d 100%);
+    background: linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--cupos-sidebar-start, #1c1710) 82%, white) 0%,
+        var(--cupos-sidebar-start, #1c1710) 45%,
+        color-mix(in srgb, var(--cupos-sidebar-start, #1c1710) 70%, black) 100%
+    );
 }
 
 .cupos-sidebar-link {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.55);
     transition: background-color 0.15s ease, color 0.15s ease;
 }
 .cupos-sidebar-link:hover {
-    background-color: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
+    background-color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.08);
+    color: rgb(var(--cupos-sidebar-text-rgb, 255, 255, 255));
+}
+
+/* ==========================================================================
+   Utilitas Teks Sidebar (mengikuti mode Terang/Gelap dari Personalisasi)
+   ========================================================================== */
+
+.cupos-sidebar-text-100 { color: rgb(var(--cupos-sidebar-text-rgb, 255, 255, 255)); }
+.cupos-sidebar-text-60  { color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.6); }
+.cupos-sidebar-text-40  { color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.4); }
+.cupos-sidebar-text-25  { color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.25); }
+.cupos-sidebar-border   { border-color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.1); }
+
+.cupos-sidebar-icon-btn {
+    color: rgba(var(--cupos-sidebar-text-rgb, 255, 255, 255), 0.6);
+    transition: color 0.15s ease;
+}
+.cupos-sidebar-icon-btn:hover {
+    color: rgb(var(--cupos-sidebar-text-rgb, 255, 255, 255));
 }
 
 .cupos-sidebar-link.is-active {
-    background: linear-gradient(180deg, #F6B93B 0%, #EF9F2E 100%);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--cupos-primary, #EF9F2E) 75%, white) 0%, var(--cupos-primary, #EF9F2E) 100%);
     color: #14161c;
     font-weight: 600;
 }

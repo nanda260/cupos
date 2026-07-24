@@ -50,4 +50,35 @@ class ShopProfileController extends Controller
             ->route('settings.index')
             ->with('status', 'Profil kedai berhasil diperbarui.');
     }
+
+    public function personalization()
+    {
+        $shopProfile = ShopProfile::first() ?? ShopProfile::create([
+            'name' => 'CUPOS',
+        ]);
+
+        return view('settings.personalization', compact('shopProfile'));
+    }
+
+    public function updatePersonalization(Request $request)
+    {
+        $shopProfile = ShopProfile::first() ?? new ShopProfile();
+
+        // Regex memastikan format selalu #RRGGBB, mencegah nilai
+        // rusak yang bisa membuat CSS variable di layout gagal parse.
+        $validated = $request->validate([
+            'primary_color'     => ['required', 'regex:/^#[0-9A-Fa-f]{6}$/'],
+            'sidebar_color'     => ['required', 'regex:/^#[0-9A-Fa-f]{6}$/'],
+            'sidebar_text_mode' => ['required', 'in:light,dark'],
+            'body_color'        => ['required', 'regex:/^#[0-9A-Fa-f]{6}$/'],
+        ]);
+
+        $shopProfile->fill($validated);
+        $shopProfile->save();
+
+        return redirect()
+            ->route('settings.personalization')
+            ->with('status', 'Tema warna berhasil diperbarui.');
+    }
 }
+
